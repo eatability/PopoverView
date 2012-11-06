@@ -46,7 +46,7 @@
     UIActivityIndicatorView *activityIndicator;
     
     //Instance variable that can change at runtime
-    BOOL showDividerRects;
+//    BOOL showDividerRects;
 }
 
 @property (nonatomic, retain) UIView *titleView;
@@ -56,6 +56,8 @@
 @property (nonatomic, retain) NSArray *subviewsArray;
 
 @property (nonatomic, assign) id<PopoverViewDelegate> delegate;
+
+@property (nonatomic) BOOL showDividerRects;
 
 // Move constants here
 

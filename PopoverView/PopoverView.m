@@ -113,6 +113,8 @@
 @synthesize titleView;
 @synthesize delegate;
 
+@synthesize showDividerRects;
+
 @synthesize arrowHeight = arrowHeight_;
 @synthesize boxPadding;
 @synthesize controlPointOffset;
@@ -239,7 +241,7 @@
         self.titleView = nil;
         self.contentView = nil;
         
-        showDividerRects = kShowDividersBetweenViews;
+        self.showDividerRects = kShowDividersBetweenViews;
         self.arrowHeight = kArrowHeight;
         self.boxPadding = kBoxPadding;
         self.controlPointOffset = kCPOffset;
@@ -838,8 +840,8 @@
             }
         }];
         
-        if(showDividerRects) {
-            showDividerRects = NO;
+        if(self.showDividerRects) {
+            self.showDividerRects = NO;
             [self setNeedsDisplay];
         }
     }
@@ -887,8 +889,8 @@
             }
         }];
         
-        if(showDividerRects) {
-            showDividerRects = NO;
+        if(self.showDividerRects) {
+            self.showDividerRects = NO;
             [self setNeedsDisplay];
         }
     }
@@ -922,8 +924,8 @@
             }
         }];
         
-        if(showDividerRects) {
-            showDividerRects = NO;
+        if(self.showDividerRects) {
+            self.showDividerRects = NO;
             [self setNeedsDisplay];
         }
     }
@@ -952,8 +954,8 @@
             }
         }];
         
-        if(showDividerRects) {
-            showDividerRects = NO;
+        if(self.showDividerRects) {
+            self.showDividerRects = NO;
             [self setNeedsDisplay];
         }
     }
@@ -1217,7 +1219,7 @@
     
     //Draw the divider rects if we need to
     {
-        if(self.showDividersBetweenViews && showDividerRects) {
+        if(self.showDividersBetweenViews && self.showDividerRects) {
             if(dividerRects && dividerRects.count > 0) {
                 for(NSValue *value in dividerRects) {
                     CGRect rect = value.CGRectValue;
