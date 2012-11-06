@@ -57,6 +57,39 @@
 
 @property (nonatomic, assign) id<PopoverViewDelegate> delegate;
 
+// Move constants here
+
+@property (nonatomic) CGFloat arrowHeight;
+@property (nonatomic) CGFloat boxPadding;
+@property (nonatomic) CGFloat controlPointOffset;
+@property (nonatomic) CGFloat boxRadius;
+@property (nonatomic) CGFloat arrowCurvature;
+@property (nonatomic) CGFloat arrowHorizontalPadding;
+@property (nonatomic) CGFloat shadowAlpha;
+@property (nonatomic) CGFloat shadowBlur;
+@property (nonatomic) CGFloat boxAlpha;
+@property (nonatomic) CGFloat topMargin;
+@property (nonatomic) CGFloat horizontalMargin;
+@property (nonatomic) CGFloat imageTopPadding;
+@property (nonatomic) CGFloat imageBottomPadding;
+
+@property (nonatomic) BOOL showDividersBetweenViews;
+@property (nonatomic, retain) UIColor *dividerColor;
+
+@property (nonatomic, retain) UIColor *gradientBottomColor;
+@property (nonatomic, retain) UIColor *gradientTopColor;
+
+@property (nonatomic) BOOL drawTitleGradient;
+@property (nonatomic, retain) UIColor *gradientTitleBottomColor;
+@property (nonatomic, retain) UIColor *gradientTitleTopColor;
+
+@property (nonatomic, retain) UIFont *normalTextFont;
+@property (nonatomic, retain) UIColor *normalTextColor;
+@property (nonatomic) NSTextAlignment normalTextAlignment;
+@property (nonatomic, retain) UIFont *titleTextFont;
+@property (nonatomic, retain) UIColor *titleTextColor;
+
+
 #pragma mark - Class Static Showing Methods
 
 //These are the main static methods you can use to display the popover.
