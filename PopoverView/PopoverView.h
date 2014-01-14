@@ -143,6 +143,8 @@
 @property (nonatomic, retain) UIColor *titleTextColor;
 
 @property (nonatomic, retain) UIColor *highlightedTextColor;
+@property (nonatomic) UIControlContentHorizontalAlignment *popOverViewContentHorizintalAlignment;
+@property(nonatomic) UIViewAutoresizing popOverViewContentAutoResizing;
 
 
 #pragma mark - Class Static Showing Methods

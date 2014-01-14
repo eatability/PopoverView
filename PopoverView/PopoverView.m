@@ -418,6 +418,10 @@
         textButton.titleLabel.font = font;
         textButton.titleLabel.textAlignment = self.normalTextAlignment;
         textButton.titleLabel.textColor = self.normalTextColor;
+        if (_popOverViewContentHorizintalAlignment)
+            [textButton setContentHorizontalAlignment:_popOverViewContentHorizintalAlignment];
+        if(_popOverViewContentAutoResizing)
+        textButton.autoresizingMask=_popOverViewContentAutoResizing;
         [textButton setTitle:string forState:UIControlStateNormal];
         textButton.layer.cornerRadius = 4.f;
         [textButton setTitleColor:self.normalTextColor forState:UIControlStateNormal];
@@ -430,7 +434,7 @@
 }
 
 - (void)showAtPoint:(CGPoint)point inView:(UIView *)view withTitle:(NSString *)title withStringArray:(NSArray *)stringArray
- {
+{
     NSMutableArray *labelArray = [[NSMutableArray alloc] initWithCapacity:stringArray.count];
     
     UIFont *font = self.normalTextFont;
@@ -442,6 +446,10 @@
         textButton.titleLabel.font = font;
         textButton.titleLabel.textAlignment = self.normalTextAlignment;
         textButton.titleLabel.textColor = self.normalTextColor;
+        if (_popOverViewContentHorizintalAlignment)
+            [textButton setContentHorizontalAlignment:_popOverViewContentHorizintalAlignment];
+        if(_popOverViewContentAutoResizing)
+            textButton.autoresizingMask=_popOverViewContentAutoResizing;
         [textButton setTitle:string forState:UIControlStateNormal];
         textButton.layer.cornerRadius = 4.f;
         [textButton setTitleColor:self.normalTextColor forState:UIControlStateNormal];
@@ -469,7 +477,7 @@
 {
     NSAssert((stringArray.count == imageArray.count), @"stringArray.count should equal imageArray.count");
     NSMutableArray* tempViewArray = [self makeTempViewsWithStrings:stringArray andImages:imageArray];
-        
+    
     [self showAtPoint:point inView:view withTitle:title withViewArray:tempViewArray];
 }
 
@@ -517,7 +525,7 @@
         [tempViewArray addObject:containerView];
         [containerView RELEASE];
     }
-
+    
     return [tempViewArray AUTORELEASE];
 }
 
@@ -572,22 +580,22 @@
 -(void)setupLayout:(CGPoint)point inView:(UIView*)view
 {
     CGPoint topPoint = [topView convertPoint:point fromView:view];
-
+    
     arrowPoint = topPoint;
-
+    
     //NSLog(@"arrowPoint:%f,%f", arrowPoint.x, arrowPoint.y);
-
+    
     CGRect topViewBounds = topView.bounds;
     //NSLog(@"topViewBounds %@", NSStringFromCGRect(topViewBounds));
-
+    
     float contentHeight = contentView.frame.size.height;
     float contentWidth = contentView.frame.size.width;
     float padding = self.boxPadding;
     float boxHeight = contentHeight + 2.f*padding;
     float boxWidth = contentWidth + 2.f*padding;
-
+    
     float xOrigin = 0.f;
-
+    
     //Make sure the arrow point is within the drawable bounds for the popover.
     if(arrowPoint.x + self.arrowHeight > topViewBounds.size.width - self.horizontalMargin - self.boxRadius - self.arrowHorizontalPadding) {//Too far to the right
         arrowPoint.x = topViewBounds.size.width - self.horizontalMargin - self.boxRadius - self.arrowHorizontalPadding - self.arrowHeight;
@@ -596,11 +604,11 @@
         arrowPoint.x = self.horizontalMargin + self.arrowHeight + self.boxRadius + self.arrowHorizontalPadding;
         //NSLog(@"Correcting Arrow Point because it's too far to the left");
     }
-
+    
     //NSLog(@"arrowPoint:%f,%f", arrowPoint.x, arrowPoint.y);
-
+    
     xOrigin = floorf(arrowPoint.x - boxWidth*0.5f);
-
+    
     //Check to see if the centered xOrigin value puts the box outside of the normal range.
     if(xOrigin < CGRectGetMinX(topViewBounds) + self.horizontalMargin) {
         xOrigin = CGRectGetMinX(topViewBounds) + self.horizontalMargin;
@@ -614,7 +622,7 @@
     float topPadding = self.topMargin;
     
     above = YES;
-
+    
     if (topPoint.y - contentHeight - arrowHeight - topPadding < CGRectGetMinY(topViewBounds)) {
         //Position below because it won't fit above.
         above = NO;
@@ -626,28 +634,28 @@
         
         boxFrame = CGRectMake(xOrigin, arrowPoint.y - arrowHeight - boxHeight, boxWidth, boxHeight);
     }
-
+    
     //NSLog(@"boxFrame:(%f,%f,%f,%f)", boxFrame.origin.x, boxFrame.origin.y, boxFrame.size.width, boxFrame.size.height);
-
+    
     CGRect contentFrame = CGRectMake(boxFrame.origin.x + padding, boxFrame.origin.y + padding, contentWidth, contentHeight);
     contentView.frame = contentFrame;
-
+    
     //We set the anchorPoint here so the popover will "grow" out of the arrowPoint specified by the user.
     //You have to set the anchorPoint before setting the frame, because the anchorPoint property will
     //implicitly set the frame for the view, which we do not want.
     self.layer.anchorPoint = CGPointMake(arrowPoint.x / topViewBounds.size.width, arrowPoint.y / topViewBounds.size.height);
     self.frame = topViewBounds;
     [self setNeedsDisplay];
-
+    
     [self addSubview:contentView];
     [topView addSubview:self];
-
+    
     //Add a tap gesture recognizer to the large invisible view (self), which will detect taps anywhere on the screen.
     UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapped:)];
     tap.cancelsTouchesInView = NO; // Allow touches through to a UITableView or other touchable view, as suggested by Dimajp.
     [self addGestureRecognizer:tap];
     [tap RELEASE];
-
+    
     self.userInteractionEnabled = YES;
 }
 
@@ -804,7 +812,7 @@
 #pragma mark - User Interaction
 
 - (void)tapped:(UITapGestureRecognizer *)tap
-{    
+{
     CGPoint point = [tap locationInView:contentView];
     
     //NSLog(@"point:(%f,%f)", point.x, point.y);
