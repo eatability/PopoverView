@@ -143,6 +143,8 @@
 @property (nonatomic, retain) UIColor *titleTextColor;
 
 @property (nonatomic, retain) UIColor *highlightedTextColor;
+
+//Below properties are added to make text left alligned
 @property (nonatomic) UIControlContentHorizontalAlignment *popOverViewContentHorizintalAlignment;
 @property(nonatomic) UIViewAutoresizing popOverViewContentAutoResizing;
 

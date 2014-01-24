@@ -450,6 +450,7 @@
             [textButton setContentHorizontalAlignment:_popOverViewContentHorizintalAlignment];
         if(_popOverViewContentAutoResizing)
             textButton.autoresizingMask=_popOverViewContentAutoResizing;
+        
         [textButton setTitle:string forState:UIControlStateNormal];
         textButton.layer.cornerRadius = 4.f;
         [textButton setTitleColor:self.normalTextColor forState:UIControlStateNormal];
