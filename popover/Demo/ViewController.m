@@ -66,7 +66,7 @@
     
     PopoverView *obj = [[PopoverView alloc] init];
     
-    [obj showAtPoint:point inView:self.view withStringArray:[NSArray arrayWithObjects:@"first",@"second",@"third",@"four", nil] andSeperatorOption:YES atSeperatorIndex:3]; // Show string array defined at top of this file with title.
+    [obj showAtPoint:point inView:self.view withStringArray:[NSArray arrayWithObjects:@"first",@"second",@"third",@"four",@"fifth",@"sixth", nil] andSeperatorOption:YES atSeperatorIndex:5]; // Show string array defined at top of this file with title.
 
 //    pv = [PopoverView showPopoverAtPoint:point
 //                                  inView:self.view
