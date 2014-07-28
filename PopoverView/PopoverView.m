@@ -283,6 +283,7 @@
         [container addSubview:view];
         
         i++;
+    
     }
     
     if (self.needToAddSeperator && viewArray.count>0 && seperatorIndexNumber<viewArray.count)
