@@ -259,11 +259,18 @@
     
     int i = 0;
     
+    float maxWidth = 0.0;
+    
     //Position each view the first time, and identify which view has the largest width that controls
     //the sizing of the popover.
     for (UIView *view in viewArray) {
         
         view.frame = CGRectMake(0, totalHeight, view.frame.size.width, view.frame.size.height);
+        
+        if (view.frame.size.width>maxWidth)
+        {
+        maxWidth = view.frame.size.width;
+        }
         //Only add padding below the view if it's not the last item
         float padding = (i == viewArray.count-1) ? 0 : self.boxPadding;
         
@@ -280,12 +287,12 @@
     
     if (self.needToAddSeperator && viewArray.count>0 && seperatorIndexNumber<viewArray.count)
     {
-        UIView *seperatorLine = [[UIView alloc] initWithFrame:CGRectMake(0, totalHeight-((totalHeight/viewArray.count)*(viewArray.count-seperatorIndexNumber)), view.frame.size.width, 1)];
+        UIView *seperatorLine = [[UIView alloc] initWithFrame:CGRectMake(0, totalHeight-((totalHeight/viewArray.count)*(viewArray.count-seperatorIndexNumber)), maxWidth, 1)];
         
         //Only add padding below the view if it's not the last item
         float padding = (i == viewArray.count-1) ? 0 : self.boxPadding;
         
-        seperatorLine.backgroundColor = [UIColor blackColor];
+        seperatorLine.backgroundColor = [UIColor whiteColor];
         
         totalHeight += seperatorLine.frame.size.height + padding;
         
