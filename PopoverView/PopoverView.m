@@ -278,6 +278,25 @@
         i++;
     }
     
+    if (self.needToAddSeperator && viewArray.count>0 && seperatorIndexNumber<viewArray.count)
+    {
+        UIView *seperatorLine = [[UIView alloc] initWithFrame:CGRectMake(0, totalHeight-((totalHeight/viewArray.count)*(viewArray.count-seperatorIndexNumber)), view.frame.size.width, 1)];
+        
+        //Only add padding below the view if it's not the last item
+        float padding = (i == viewArray.count-1) ? 0 : self.boxPadding;
+        
+        seperatorLine.backgroundColor = [UIColor blackColor];
+        
+        totalHeight += seperatorLine.frame.size.height + padding;
+        
+        if (seperatorLine.frame.size.width > totalWidth) {
+            totalWidth = seperatorLine.frame.size.width;
+        }
+        
+        [container addSubview:seperatorLine];
+        
+    }
+    
     //If dividers are enabled, then we allocate the divider rect array.  This will hold NSValues
     if(self.showDividersBetweenViews) {
         dividerRects = [[NSMutableArray alloc] initWithCapacity:viewArray.count-1];
@@ -405,6 +424,14 @@
     [self showAtPoint:point inView:view withContentView:[container AUTORELEASE]];
 }
 
+- (void)showAtPoint:(CGPoint)point inView:(UIView *)view withStringArray:(NSArray *)stringArray andSeperatorOption:(BOOL)seperatorOption atSeperatorIndex:(int)seperatorIndex
+{
+    self.needToAddSeperator = seperatorOption;
+    
+    seperatorIndexNumber = seperatorIndex;
+    
+    [self showAtPoint:point inView:view withStringArray:stringArray];
+}
 - (void)showAtPoint:(CGPoint)point inView:(UIView *)view withStringArray:(NSArray *)stringArray
 {
     NSMutableArray *labelArray = [[NSMutableArray alloc] initWithCapacity:stringArray.count];
@@ -421,7 +448,7 @@
         if (_popOverViewContentHorizintalAlignment)
             [textButton setContentHorizontalAlignment:_popOverViewContentHorizintalAlignment];
         if(_popOverViewContentAutoResizing)
-        textButton.autoresizingMask=_popOverViewContentAutoResizing;
+            textButton.autoresizingMask=_popOverViewContentAutoResizing;
         [textButton setTitle:string forState:UIControlStateNormal];
         textButton.layer.cornerRadius = 4.f;
         [textButton setTitleColor:self.normalTextColor forState:UIControlStateNormal];

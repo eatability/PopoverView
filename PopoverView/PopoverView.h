@@ -96,11 +96,13 @@
     
     UIActivityIndicatorView *activityIndicator;
     
+    int seperatorIndexNumber;
     //Instance variable that can change at runtime
-//    BOOL showDividerRects;
+    //    BOOL showDividerRects;
 }
 
 @property (nonatomic, STRONG) UIView *titleView;
+@property (nonatomic) BOOL needToAddSeperator;
 
 @property (nonatomic, STRONG) UIView *contentView;
 
@@ -208,6 +210,8 @@
 
 //Lays out the PopoverView at a point once all of the views have already been setup elsewhere
 - (void)layoutAtPoint:(CGPoint)point inView:(UIView *)view;
+
+- (void)showAtPoint:(CGPoint)point inView:(UIView *)view withStringArray:(NSArray *)stringArray andSeperatorOption:(BOOL)seperatorOption atSeperatorIndex:(int)seperatorIndex;
 
 #pragma mark - Other Interaction
 //This method animates the rotation of the PopoverView to a new point

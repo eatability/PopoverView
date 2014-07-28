@@ -64,11 +64,9 @@
 //                         withStringArray:kStringArray
 //                                delegate:self]; // Show the string array defined at top of this file
     
-    pv = [PopoverView showPopoverAtPoint:point
-                                  inView:self.view
-                               withTitle:@"Was this helpful?"
-                         withStringArray:kStringArray
-                                delegate:self]; // Show string array defined at top of this file with title.
+    PopoverView *obj = [[PopoverView alloc] init];
+    
+    [obj showAtPoint:point inView:self.view withStringArray:[NSArray arrayWithObjects:@"first",@"second",@"third",@"four", nil] andSeperatorOption:YES atSeperatorIndex:3]; // Show string array defined at top of this file with title.
 
 //    pv = [PopoverView showPopoverAtPoint:point
 //                                  inView:self.view
