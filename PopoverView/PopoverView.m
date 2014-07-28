@@ -294,6 +294,7 @@
     
     }
     
+    
     if (self.needToAddSeperator && viewArray.count>0 && seperatorIndexNumber<viewArray.count)
     {
         UIView *seperatorLine = [[UIView alloc] initWithFrame:CGRectMake(0, totalHeight-((totalHeight/viewArray.count)*(viewArray.count-seperatorIndexNumber) + totalHeight/viewArray.count*2)+(totalHeight/viewArray.count), maxWidth, 1)];
