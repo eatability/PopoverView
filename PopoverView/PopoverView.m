@@ -312,6 +312,7 @@
         
         [container addSubview:seperatorLine];
         
+        
     }
     
     //If dividers are enabled, then we allocate the divider rect array.  This will hold NSValues
