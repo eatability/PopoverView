@@ -304,7 +304,7 @@
         
         seperatorLine.backgroundColor = [UIColor whiteColor];
         
-        totalHeight += seperatorLine.frame.size.height + padding + (totalHeight/viewArray.count);
+        totalHeight += seperatorLine.frame.size.height + padding;
         
         if (seperatorLine.frame.size.width > totalWidth) {
             totalWidth = seperatorLine.frame.size.width;
